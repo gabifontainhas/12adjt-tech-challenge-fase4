@@ -1,0 +1,5 @@
+br\com\gabifontainhas\techchallenge\handler\RelatorioSemanalHandler.class
+br\com\gabifontainhas\techchallenge\App.class
+br\com\gabifontainhas\techchallenge\handler\FeedbackStreamHandler.class
+br\com\gabifontainhas\techchallenge\handler\AvaliacaoHandler.class
+br\com\gabifontainhas\techchallenge\model\FeedbackRequest.class
