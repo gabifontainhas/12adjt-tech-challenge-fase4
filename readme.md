@@ -2,6 +2,17 @@
 
 Este projeto é a entrega da Fase 4 da Pós-Graduação, focado em Cloud Computing, Serverless e Deploy de Aplicações. O sistema consiste em uma plataforma de processamento de feedbacks de alunos, totalmente hospedada na nuvem da AWS, garantindo alta disponibilidade, segurança e baixo custo operacional.
 
+## 📹 Vídeo de Demonstração
+
+No vídeo abaixo, é possível conferir:
+
+- A explicação da arquitetura e decisões de segurança (BFF/API Key).
+- As configurações de governança no console da AWS (IAM).
+- O funcionamento do pipeline CI/CD (GitHub Actions).
+- Testes práticos no Postman demonstrando a gravação de dados, o envio do Alerta Crítico e a geração do Relatório Semanal.
+
+🔗 **https://youtu.be/67J9s62dhCM**
+
 ## 🏗️ Arquitetura da Solução e Modelo Cloud Escolhido
 
 ```mermaid
@@ -103,17 +114,6 @@ A automação de entrega e atualização dos componentes (funções) foi constru
 - **Cloud:** AWS (API Gateway, Lambda, DynamoDB, SNS, IAM, CloudWatch).
 - **DevOps:** Git, GitHub Actions, AWS CLI.
 - **Teste de API:** Postman.
-
-## 📹 Vídeo de Demonstração
-
-No vídeo abaixo, é possível conferir:
-
-- A explicação da arquitetura e decisões de segurança (BFF/API Key).
-- As configurações de governança no console da AWS (IAM).
-- O funcionamento do pipeline CI/CD (GitHub Actions).
-- Testes práticos no Postman demonstrando a gravação de dados, o envio do Alerta Crítico e a geração do Relatório Semanal.
-
-🔗 **https://youtu.be/67J9s62dhCM**
 
 ## 👩‍💻 Autora
 
