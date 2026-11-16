@@ -10,7 +10,9 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,6 +21,8 @@ public class AvaliacaoHandler implements RequestHandler<APIGatewayProxyRequestEv
     private final Gson gson;
     private final DynamoDbClient dynamoDb;
     private final String TABLE_NAME = "Feedbacks";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private static final ZoneId BRASIL_ZONE = ZoneId.of("America/Sao_Paulo");
 
     public AvaliacaoHandler() {
         this.gson = new Gson();
@@ -71,7 +75,7 @@ public class AvaliacaoHandler implements RequestHandler<APIGatewayProxyRequestEv
     }
 
     private Map<String, AttributeValue> montarItemDynamo(String id, FeedbackRequest feedback) {
-        var dataEnvio = Instant.now().toString();
+        var dataEnvioFormatada = LocalDateTime.now(BRASIL_ZONE).format(FORMATTER);
 
         var urgencia = feedback.nota() <= 4 ? "ALTA" : "BAIXA";
 
@@ -79,8 +83,8 @@ public class AvaliacaoHandler implements RequestHandler<APIGatewayProxyRequestEv
                 "id", AttributeValue.builder().s(id).build(),
                 "descricao", AttributeValue.builder().s(feedback.descricao()).build(),
                 "nota", AttributeValue.builder().n(String.valueOf(feedback.nota())).build(),
-                "dataEnvio", AttributeValue.builder().s(dataEnvio).build(), // Atualizado para camelCase
-                "urgencia", AttributeValue.builder().s(urgencia).build() // Adicionando o campo que as outras Lambdas precisam
+                "dataEnvio", AttributeValue.builder().s(dataEnvioFormatada).build(),
+                "urgencia", AttributeValue.builder().s(urgencia).build()
         );
     }
 
