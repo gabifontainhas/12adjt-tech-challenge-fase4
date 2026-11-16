@@ -113,7 +113,7 @@ No vídeo abaixo, é possível conferir:
 - O funcionamento do pipeline CI/CD (GitHub Actions).
 - Testes práticos no Postman demonstrando a gravação de dados, o envio do Alerta Crítico e a geração do Relatório Semanal.
 
-🔗 **[Insira o Link do Vídeo no YouTube Aqui]**
+🔗 **https://youtu.be/67J9s62dhCM**
 
 ## 👩‍💻 Autora
 
