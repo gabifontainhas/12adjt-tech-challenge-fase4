@@ -14,10 +14,20 @@ import java.util.stream.Collectors;
 
 public class RelatorioSemanalHandler implements RequestHandler<Map<String, Object>, Void> {
 
-    private final DynamoDbClient dynamoDbClient = DynamoDbClient.create();
-    private final SnsClient snsClient = SnsClient.create();
+    private final DynamoDbClient dynamoDbClient;
+    private final SnsClient snsClient;
     private final String TOPIC_ARN = "arn:aws:sns:us-east-2:775524235851:AlertaFeedbackTopic";
     private final String TABLE_NAME = "Feedbacks";
+
+    public RelatorioSemanalHandler() {
+        this.dynamoDbClient = DynamoDbClient.create();
+        this.snsClient = SnsClient.create();
+    }
+
+    public RelatorioSemanalHandler(DynamoDbClient dynamoDbClient, SnsClient snsClient) {
+        this.dynamoDbClient = dynamoDbClient;
+        this.snsClient = snsClient;
+    }
 
     @Override
     public Void handleRequest(Map<String, Object> event, Context context) {
@@ -103,4 +113,5 @@ public class RelatorioSemanalHandler implements RequestHandler<Map<String, Objec
                 .build();
         snsClient.publish(snsRequest);
     }
+
 }
